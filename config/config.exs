@@ -10,6 +10,10 @@ import Config
 config :dely,
   ecto_repos: [Dely.Repo]
 
+config :dely, Dely.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 # Configures the endpoint
 config :dely, DelyWeb.Endpoint,
   url: [host: "localhost"],
