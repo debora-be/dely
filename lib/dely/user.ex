@@ -8,6 +8,8 @@ defmodule Dely.User do
 
   @required_params [:age, :address, :cep, :cpf, :email, :password, :name]
 
+  @derive {Jason.Encoder, only: [:id, :name, :email, :cpf, :cep, :address, :age]}
+
   schema "users" do
     field :age, :integer
     field :address, :string

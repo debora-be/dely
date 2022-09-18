@@ -10,5 +10,3 @@ defmodule Dely do
 
   defdelegate create_user(params), to: UserCreate, as: :call
 end
-
-Dely.create_user()
