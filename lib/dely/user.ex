@@ -23,9 +23,9 @@ defmodule Dely.User do
     timestamps()
   end
 
-  def changeset(user_params) do
-    %__MODULE__{}
-    |> cast(user_params, @required_params)
+  def changeset(struct \\ %__MODULE__{}, params) do
+    struct
+    |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_length(:password_hash, min: 6)
     |> validate_length(:cep, is: 8)

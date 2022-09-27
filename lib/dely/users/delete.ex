@@ -6,7 +6,6 @@ defmodule Dely.Users.Delete do
     case UUID.cast(id) do
       :error -> {:error, Error.build_id_format_error()}
       {:ok, uuid} -> delete(uuid)
-      {:ok, uuid} -> delete(uuid)
     end
   end
 
