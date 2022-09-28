@@ -1,8 +1,11 @@
 defmodule DelyWeb.Router do
   use DelyWeb, :router
 
+  alias DelyWeb.Plugs.UUIDChecker
+
   pipeline :api do
     plug :accepts, ["json"]
+    plug UUIDChecker
   end
 
   scope "/api", DelyWeb do
