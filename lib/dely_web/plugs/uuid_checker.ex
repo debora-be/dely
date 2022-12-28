@@ -7,10 +7,12 @@ defmodule DelyWeb.Plugs.UUIDChecker do
   def init(opts), do: opts
 
   def call(%Conn{params: %{"id" => id}} = conn, _opts) do
+    IO.puts("UUIDChecker: #{id}")
+    IO.inspect(conn, label: "***********************CONN***********************")
+
     case UUID.cast(id) do
       :error -> render_error(conn)
       {:ok, _uuid} -> conn
-      id -> check_uuid(conn, id)
     end
   end
 
@@ -23,6 +25,5 @@ defmodule DelyWeb.Plugs.UUIDChecker do
     |> put_resp_content_type("application/json")
     |> send_resp(:bad_request, body)
     |> halt()
-    end
   end
 end
